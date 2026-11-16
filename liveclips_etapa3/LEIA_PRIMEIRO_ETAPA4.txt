@@ -1,0 +1,52 @@
+LIVECLIPS - ETAPA 4 (BETA) - LAYOUT TIKTOK - MANUAL (A)
+=========================================================
+
+O QUE FOI ADICIONADO
+- Editor separado, que gera MP4 vertical 720x1280, a 30 fps.
+- Parte superior: webcam ampliada (45% da altura).
+- Parte inferior: gameplay centralizada (55% da altura).
+- Legendas na parte de baixo quando o FFmpeg possui filtro subtitles.
+- Escolha manual 1..4 de canto ou opcao 5 para arrastar um retangulo em volta da webcam.
+- Funciona com os mesmos segmentos e transcricoes da Etapa 3.
+- Nenhuma API paga. Este pacote nao altera a selecao de momentos (ainda e por regras simples).
+
+INSTALACAO
+1. PARE todos os agentes anteriores com Ctrl+C antes de testar esta versao.
+2. EXTRAIA este ZIP numa pasta temporaria.
+3. COPIE OS 6 ARQUIVOS abaixo PARA DENTRO da pasta ORIGINAL liveclips_etapa3:
+   layout_tiktok.py
+   agente_edicao_tiktok.py
+   iniciar_tiktok.py
+   testar_layout_tiktok.py
+   INICIAR_TIKTOK.bat
+   TESTAR_LAYOUT_TIKTOK.bat
+   (O LEIA_PRIMEIRO_ETAPA4.txt tambem pode ser copiado.)
+4. NAO apague .venv, agente_analise.py, comum.py, config.py ou outros arquivos.
+5. Nao precisa reinstalar Python nem bibliotecas.
+
+PRIMEIRO TESTE (RECOMENDADO)
+1. Dê 2 cliques em TESTAR_LAYOUT_TIKTOK.bat.
+2. Digite 1 para selecionar uma sessao (ou escolha outra da lista).
+3. Escolha canto 1-4, ou 5 para abrir uma imagem da live.
+4. Se usar 5, arraste o mouse fazendo um retangulo JUSTO em torno da webcam.
+5. Escolha um segmento para teste e aguarde; sera gerada uma previa de ate 12s.
+6. Abra o MP4 em C:\LiveClips\agentes\NOME_DA_SESSAO\cortes_tiktok.
+7. Se a area nao ficou boa, rode o BAT novamente, responda N para reutilizar
+   o perfil antigo e escolha 5 para ajustar o retangulo.
+
+PARA EDITAR EM TEMPO REAL
+1. Inicie a captura da Etapa 2 para gerar nova pasta de segmentos.
+2. Apos sair o primeiro segmento, rode INICIAR_TIKTOK.bat.
+3. Escolha a sessao RECENTE e configure a webcam.
+4. Confirme S para iniciar os agentes; deixe a captura e as janelas abertas.
+5. Novos videos aparecerao em ...\cortes_tiktok.
+
+IMPORTANTE
+- O layout 720x1280 e 9:16, mais leve no FX-8320E. Pode ser atualizado a
+  1080x1920 apos testar desempenho no seu PC.
+- Nao usa detecao automatica de rosto/webcam. Opcao 5 e uma marcacao manual.
+- O corte da gameplay usa zoom central para encher a metade inferior: HUDs nas bordas
+  podem ficar fora do quadro. Vamos melhorar apos validar a composicao.
+- Os arquivos antigos .ts, mp4 e transcricoes permanecem intactos.
+- Evite executar o editor antigo e o novo simultaneamente na MESMA sessao.
+- O primeiro teste nao muda a regra de escolha dos highlights; isso sera a proxima etapa.

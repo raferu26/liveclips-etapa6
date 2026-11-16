@@ -1,0 +1,60 @@
+LIVECLIPS - ETAPA 3 (TESTE GRATUITO)
+===================================
+
+O QUE ESTA VERSAO FAZ:
+- Monitora os .ts que a ETAPA 2 grava, sem interromper a captura.
+- Agente 1 usa IA local (Faster-Whisper tiny) para transcrever a fala.
+- O agente 1 escolhe um trecho usando REGRAS simples com palavras-chave.
+- Agente 2, em processo separado, cria MP4 vertical + SRT + descricao.
+- Nenhuma chave de API e exigida; NAO ha cobranca por uso.
+- Nenhuma publicacao ocorre automaticamente.
+
+IMPORTANTE: a escolha do corte AINDA NAO E UMA IA SEMANTICA.
+Esta e uma versao de teste para validar paralelismo, transcricao e exportacao.
+O Whisper e a IA de transcricao. Mais tarde conectaremos a IA de highlights.
+
+INSTALACAO, UMA VEZ:
+1. Mantenha Python, FFmpeg e Streamlink da etapa anterior.
+2. Instale Python 3.11 (se ainda nao estiver instalado):
+   winget install --id Python.Python.3.11 -e
+   Reinicie o PowerShell e confira: py -3.11 --version
+3. Clique duas vezes em INSTALAR_ETAPA3.bat.
+   Ele cria ambiente virtual local e instala Faster-Whisper via pip.
+   O modelo tiny sera baixado no primeiro uso (requer internet).
+
+TESTE:
+1. Pode usar os 3 .ts ja capturados OU iniciar uma nova live
+   usando INICIAR_CAPTURA.bat da Etapa 2 (mantenha rodando).
+2. Execute INICIAR_OS_DOIS_AGENTES.bat.
+3. Escolha o numero da pasta de segmentos.
+4. Digite S para abrir as duas janelas independentes.
+5. Espere. No FX-8320E pode demorar VARIOS minutos por arquivo.
+6. Abra: C:\LiveClips\agentes\NOME_DA_SESSAO\cortes
+   Os arquivos .mp4 sao cortes verticais com quadro completo e barras.
+   Os .srt tambem sao salvos para edicao posterior.
+7. Para parar, use Ctrl+C nas janelas dos agentes. A captura da
+   Etapa 2 continua ate voce interromper na janela dela.
+
+SOBRE A ULTIMA PARTE DE UMA LIVE:
+- Um .ts novo ainda pode estar sendo gravado. O programa aguarda.
+- Se voce encerrar a captura, o ultimo segmento passa a ser
+  processado apos ~25s sem modificacoes (se contiver video valido).
+
+ERROS COMUNS:
+- 'py -3.11' nao existe: instale Python 3.11 e reinicie o terminal.
+- ImportError DLL: instale Microsoft Visual C++ Redistributable x64
+  https://learn.microsoft.com/pt-br/cpp/windows/latest-supported-vc-redist
+- Sem transcricao: a live pode ter pouca fala ou outro idioma.
+- MP4 sem legenda embutida: FFmpeg tentou converter sem filtro; .srt
+  separado continua disponivel.
+- Captura 1080p60 muito pesada: na Etapa 2 substitua 'best' por
+  '720p60' se disponivel, ou '480p', antes de iniciar uma NOVA captura.
+- Reiniciar nao apaga videos finalizados, mas um erro em meio a edicao
+  pode exigir mover JSON da fila/erros para fila/pendentes manualmente.
+
+CUSTO: R$ 0 em APIs, R$ 0 em licencas. Consome CPU, disco e internet.
+O arquivo baixado do modelo de voz vem do repositorio oficial (HuggingFace)
+via biblioteca faster-whisper. Pode requerer centenas de MB em disco.
+
+NAO envie senhas, cookies ou chaves de API. Publique somente material
+para o qual possua autorizacao.
