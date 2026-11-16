@@ -1,0 +1,33 @@
+LiveClips - Etapa 2: captura continua em segmentos
+==================================================
+
+O que faz:
+- Abre a URL de uma live via Streamlink.
+- Envia o fluxo para o FFmpeg sem usar o pipe de texto do PowerShell.
+- Salva arquivos MPEG-TS em partes de cerca de 60 segundos.
+- Nao analisa nem edita os momentos ainda. Isso sera feito nas proximas etapas.
+- Nao envia dados a APIs de IA e nao gera custos de API.
+
+Pre-requisitos:
+- Windows com Python, Streamlink e FFmpeg instalados e reconhecidos.
+- Permissao do criador para usar a transmissao.
+
+Passos:
+1. Extraia os tres arquivos do ZIP para a mesma pasta.
+2. Clique duas vezes em INICIAR_CAPTURA.bat.
+3. Pressione Enter para usar a live do teste anterior, ou cole outra URL.
+4. Espere pelo menos 2 a 3 minutos.
+5. Aperte Ctrl+C para encerrar.
+6. Abra C:\LiveClips\segmentos\ e entre na pasta mais recente.
+7. Confira os arquivos segmento_00000.ts, segmento_00001.ts, etc.
+
+Observacoes:
+- Cada arquivo pode passar um pouco de 60 segundos por causa dos keyframes.
+- Os arquivos da sessao atual podem estar incompletos enquanto estao sendo gravados.
+- O FFmpeg copia video e audio sem recodificar, reduzindo uso de CPU.
+- Captura em qualidade 'best'. Se for pesado, da para reduzir depois.
+- Se a live encerrar ou estiver indisponivel, o programa informara o erro.
+- Nao compartilhe credenciais e chaves de API no terminal ou no chat.
+
+Para converter um dos segmentos para MP4 (apos parar a gravacao):
+ffmpeg -i "CAMINHO_DO_SEGMENTO.ts" -c copy "C:\LiveClips\teste_segmento.mp4"
